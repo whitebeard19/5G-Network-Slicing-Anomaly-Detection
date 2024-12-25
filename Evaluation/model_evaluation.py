@@ -39,11 +39,26 @@ class ModelEvaluator:
         features = ['bandwidth', 'packets_rate', 'delay', 'jitter', 
                    'loss_rate', 'bandwidth_change', 'throughput']
         
+        # Load original data
+        original_data = pd.read_csv('data/preprocessed_data.csv')
+        original_data['is_anomaly'] = self.results['is_anomaly']
+        
         for feature in features:
-            normal_std = self.analysis[self.analysis['is_anomaly'] == 0][feature].std()
-            anomaly_std = self.analysis[self.analysis['is_anomaly'] == 1][feature].std()
-            importance = abs(anomaly_std - normal_std) / normal_std
-            print(f"{feature}: {importance:.4f}")
+            try:
+                # Calculate statistics for normal vs anomaly samples
+                normal_data = original_data[original_data['is_anomaly'] == 0][feature]
+                anomaly_data = original_data[original_data['is_anomaly'] == 1][feature]
+                
+                # Calculate mean difference
+                normal_mean = normal_data.mean()
+                anomaly_mean = anomaly_data.mean()
+                
+                # Calculate importance score
+                importance = abs(anomaly_mean - normal_mean) / (normal_data.std() + 1e-10)
+                print(f"{feature}: {importance:.4f}")
+                
+            except Exception as e:
+                print(f"{feature}: Error in calculation")
     
     def plot_evaluation_metrics(self):
         """Create evaluation visualizations"""
