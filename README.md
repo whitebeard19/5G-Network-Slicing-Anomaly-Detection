@@ -270,7 +270,7 @@
 
    2. **Dataset Information**:
    - Name: Network Slicing Dataset
-   - Repository: https://zenodo.org/records/1061061
+   - Dataset DOI: 10.5281/zenodo.10610616
    - Description: Comprehensive dataset for network slicing in B5G networks
    - License: Creative Commons Attribution 4.0 International
 
