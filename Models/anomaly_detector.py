@@ -32,7 +32,7 @@ class AnomalyDetector:
         plt.xlabel('Reconstruction Error')
         plt.ylabel('Count')
         plt.legend()
-        plt.savefig('models/reconstruction_error_dist.png')
+        plt.savefig('Models/reconstruction_error_dist.png')
         plt.close()
     
     def analyze_results(self, data, anomalies, mse):
@@ -52,12 +52,12 @@ class AnomalyDetector:
 
 def main():
     # Create directories if they don't exist
-    os.makedirs('models', exist_ok=True)
+    os.makedirs('Models', exist_ok=True)
     os.makedirs('results', exist_ok=True)
     
     # Set paths for local computer
-    MODEL_PATH = 'models/autoencoder.keras'
-    THRESHOLD_PATH = 'models/reconstruction_threshold.npy'
+    MODEL_PATH = 'Models/autoencoder.keras'
+    THRESHOLD_PATH = 'Models/reconstruction_threshold.npy'
     DATA_PATH = 'data'
     
     # Load test data
