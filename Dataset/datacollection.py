@@ -118,7 +118,7 @@ def main():
     print(df.describe())
     
     # Save to CSV
-    df.to_csv("network_data.csv", index=False)
+    df.to_csv("Dataset/network_data.csv", index=False)
     
     print("\nData Collection Summary:")
     print(f"Total samples: {df['sample_id'].nunique()}")

@@ -110,7 +110,7 @@ class DataPreprocessor:
 
 def main():
     # Initialize preprocessor
-    preprocessor = DataPreprocessor("network_data.csv")
+    preprocessor = DataPreprocessor("Dataset/network_data.csv")
     
     # Process data
     X_train, X_val, X_test = preprocessor.process_data()
