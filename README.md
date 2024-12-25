@@ -20,7 +20,13 @@
 - Minimum Error: 0.0788
 
 ### 2.3 Feature Importance Analysis
-[Add feature importance scores from evaluation]
+- bandwidth: 0.0823
+- packets_rate: 0.3105
+- delay: 0.0354
+- jitter: 0.0254
+- loss_rate: 0.1339
+- bandwidth_change: 0.1057
+- throughput: 0.1596
 
 ## 3. Key Findings
 1. **Anomaly Detection**:
