@@ -99,7 +99,7 @@ class NetworkDataCollector:
 
 def main():
     # Initialize collector
-    collector = NetworkDataCollector("C:/Projects/Finalproject/dataset/simulation")
+    collector = NetworkDataCollector("C:/Projects/Network/Simulations")
     
     # Collect data
     df = collector.collect_data()
