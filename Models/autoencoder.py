@@ -33,7 +33,7 @@ class NetworkAutoencoder:
     def train(self, X_train, X_val, epochs=100, batch_size=32):
         """Train the autoencoder"""
         # Create directories for model checkpoints
-        os.makedirs('models/checkpoints', exist_ok=True)
+        os.makedirs('Models/checkpoints', exist_ok=True)
         
         # Callbacks
         early_stopping = EarlyStopping(
@@ -43,7 +43,7 @@ class NetworkAutoencoder:
         )
         
         checkpoint = ModelCheckpoint(
-            'models/checkpoints/autoencoder_{epoch:02d}.keras',
+            'Models/checkpoints/autoencoder_{epoch:02d}.keras',
             save_best_only=True,
             monitor='val_loss'
         )
@@ -75,7 +75,7 @@ class NetworkAutoencoder:
         plt.legend(['Train', 'Validation'], loc='upper right')
         
         plt.tight_layout()
-        plt.savefig('models/training_history.png')
+        plt.savefig('Models/training_history.png')
         plt.close()
     
     def compute_reconstruction_error(self, X):
@@ -84,13 +84,13 @@ class NetworkAutoencoder:
         mse = np.mean(np.power(X - X_pred, 2), axis=1)
         return mse
     
-    def save_model(self, path='models/autoencoder.keras'):
+    def save_model(self, path='Models/autoencoder.keras'):
         """Save the trained model"""
         self.autoencoder.save(path)
     
-    def load_model(self, path='models/autoencoder.keras'):
+    def load_model(self, path='Models/autoencoder.keras'):
         """Load a trained model"""
-        self.autoencoder = tf.keras.models.load_model(path)
+        self.autoencoder = tf.keras.Models.load_model(path)
 
 def main():
     # Load preprocessed data
@@ -125,7 +125,7 @@ def main():
     
     # Save error thresholds
     threshold = np.mean(train_error) + 2 * np.std(train_error)
-    np.save('models/reconstruction_threshold.npy', threshold)
+    np.save('Models/reconstruction_threshold.npy', threshold)
     
     print("\nModel training completed!")
     print("Threshold for anomaly detection:", threshold)
